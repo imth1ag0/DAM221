@@ -1,31 +1,46 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-export const Perfil = () => {
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { useState } from 'react';
+export const Perfil = ({nombre,carrera,materia,cuatri}) => {
+  const [mostrar,setMostrar]= useState(false);
   return (
-    <View style={styles.card}>
-      <Text style={styles.texto}><Text style={styles.bold}>Nombre:</Text> Rodríguez Navarro Santiago</Text>
-      <Text style={styles.texto}><Text style={styles.bold}>Carrera:</Text> Ingeniería en Tecnologias de la Información e Innovación Digital</Text>
-      <Text style={styles.texto}><Text style={styles.bold}>Materia:</Text> Desarrollo de Aplicaciones Móviles</Text>
-      <Text style={styles.texto}><Text style={styles.bold}>Cuatrimestre:</Text> 4° Cuatrimestre</Text>
+    <View >
+      <Text> {nombre} </Text>
+
+      {mostrar &&
+      <>
+      <Text> {carrera} </Text>
+      <Text> {materia} </Text>
+      <Text> {cuatri} </Text>
+      </>
+      }
+    <Button title="Ver Perfil" onPress={ ()=>setMostrar(!mostrar) } />
+
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
+const estilos=StyleSheet.create({
+  nombre:{
+    fontSize:24,
+    fontWeight:500,
+    textTransform: 'uppercase'
+    },
+  carrera:{
+    fontSize:20,
+    color: "red",
+    fontFamily: 'Roboto'
+    },
+  otrotexto:{
+    fontSize:18,
+    color: 'green',
+    fontFamily: 'Courier',
+    fontStyle: 'italic'
+    },
+  tarjetas:{
+    borderWidth: 3,
+    borderRadius: 10,
     padding: 15,
-    backgroundColor: '#eef2f5',
-    borderRadius: 8,
-    marginVertical: 10,
-    width: '90%',
-  },
-  texto: {
-    fontSize: 14,
-    color: '#333',
-    marginBottom: 5,
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
+    margin: 10,
+    },      
+    
 });
